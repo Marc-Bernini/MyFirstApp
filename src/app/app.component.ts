@@ -9,10 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Kerams';
   hover = true;
-  displayMovies = false;
+  showMovies = false;
 
 displayMoviesList() {
-  this.displayMovies = !this.displayMovies;
+  this.showMovies = !this.showMovies;
 }
 
 }
