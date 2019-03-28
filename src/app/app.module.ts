@@ -6,12 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HoverDirective } from './hover.directive';
+import { DisplayMoviesDirective } from './display-movies.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    HoverDirective,
+    DisplayMoviesDirective
   ],
   imports: [
     BrowserModule,

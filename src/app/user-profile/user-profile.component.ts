@@ -24,10 +24,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   hideAge() {
-    if (this.hide === true) {
-      this.hide = false;
-    } else {
-      this.hide = true;
-    }
+    this.hide = !this.hide;
   }
 }

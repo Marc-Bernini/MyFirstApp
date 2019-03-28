@@ -6,6 +6,15 @@
   </h1>
 </div>
 
+<button (click)="displayMoviesList()">Click to see movies list</button>
+
+<ul *appDisplayMovies= "displayMovies">
+    <li appHover >The fifth element</li>
+    <li>Matrix</li>
+    <li>Remember the titans</li>
+    <li>Rocky II</li>
+</ul>
+
 <app-sign-up></app-sign-up>
 
 <app-user-profile></app-user-profile>
