@@ -7,12 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'Kerams';
-  hover = true;
-  showMovies = false;
 
-displayMoviesList() {
-  this.showMovies = !this.showMovies;
-}
+  title = 'Kerams';
 
 }

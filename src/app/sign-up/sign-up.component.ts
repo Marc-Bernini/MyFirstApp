@@ -8,11 +8,17 @@ import { EmailValidator } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  email = 'emailRenseignéDansInput';
+  email = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  hover = true;
+  showMovies = false;
+
+displayMoviesList() {
+  this.showMovies = !this.showMovies;
+}
+
+  ngOnInit() {}
 
 }
