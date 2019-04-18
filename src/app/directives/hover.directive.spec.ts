@@ -2,7 +2,7 @@ import { HoverDirective } from './hover.directive';
 
 describe('HoverDirective', () => {
   it('should create an instance', () => {
-    const directive = new HoverDirective();
+    const directive = new HoverDirective(this.elfRef, this.renderer);
     expect(directive).toBeTruthy();
   });
 });

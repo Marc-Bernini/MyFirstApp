@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { HoverDirective } from './hover.directive';
-import { DisplayMoviesDirective } from './display-movies.directive';
-import { MenuComponent } from './menu/menu.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { HoverDirective } from './directives/hover.directive';
+import { DisplayMoviesDirective } from './directives/display-movies.directive';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [

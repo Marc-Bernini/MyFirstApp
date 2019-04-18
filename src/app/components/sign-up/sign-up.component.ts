@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,10 +16,13 @@ export class SignUpComponent implements OnInit {
   hover = true;
   showMovies = false;
 
-displayMoviesList() {
-  this.showMovies = !this.showMovies;
-}
-
   ngOnInit() {}
 
+  displayMoviesList() {
+    this.showMovies = !this.showMovies;
+  }
+
+  onSubmit() {
+    console.log('form submitted');
+  }
 }

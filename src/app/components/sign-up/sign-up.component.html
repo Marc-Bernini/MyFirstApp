@@ -1,0 +1,40 @@
+<div>
+  <label>
+    <h1>{{email}}</h1>
+  </label>
+</div>
+
+<input type="email" name="email" placeholder="Please, enter your mail" [(ngModel)]="email"/>
+
+<form (ngSubmit)="onSubmit(form)">
+  <div>
+    <label for="title-order">Title</label>
+    <input name="title-order" type="text" required>
+  </div>
+
+  <div>
+    <label for="quantity-order">Quantité</label>
+    <input name="quantity-order" type="number" required max="5">
+  </div>
+
+  <div>
+    <label for="date-order">Date de commande</label>
+    <input name="date-order" type="date" required>
+  </div>
+  <div>
+    <label for="contact-order">Contact</label>
+    <input name="contact-order" type="text" required email>
+  </div>
+    <button type="reset">Restaurer</button>
+
+    <button type="submit">Sauvegarder</button>
+</form>
+
+<button (click)="displayMoviesList()">Click to see movies list</button>
+
+<ul *appDisplayMovies= "showMovies">
+    <li appHover >The fifth element</li>
+    <li>Matrix</li>
+    <li>Remember the titans</li>
+    <li>Rocky II</li>
+</ul>
