@@ -9,8 +9,67 @@
 <button (click)="displayMoviesList()">Click to see movies list</button>
 
 <ul *appDisplayMovies= "showMovies">
-    <li appHover >The fifth element</li>
+<li appHover >The fifth element</li>
     <li>Matrix</li>
     <li>Remember the titans</li>
     <li>Rocky II</li>
 </ul>
+
+<form (ngSubmit)="myForm.valid && onSubmit(form)" #myForm="ngForm">
+  <div>
+    Form valid ? {{myForm.valid}}
+    Form invalid ? {{myForm.valid}}
+    Form submitted ? {{myForm.submitted}}
+  </div>
+
+  <div>
+    <label for="title-order">Title</label>
+
+    <input name="title-order" type="text" [(ngModel)]="model.title" #title="ngModel" required>
+  </div>
+
+   <!-- Message d'erreurs -->
+  <div *ngIf="title.errors">
+    <span *ngIf="title.errors.required">Le champs title est requis</span>
+  </div>
+
+  <div>
+    <label for="quantity-order">Quantité</label>
+
+    <input name="quantity-order" type="number" [(ngModel)]="model.quantity" #quantity="ngModel" required max="5">
+  </div>
+
+  <!-- Message d'erreurs -->
+  <div *ngIf="quantity.errors">
+    <span *ngIf="quantity.errors.required">Le champs quantité est requis</span>
+
+    <span *ngIf="quantity.errors.max">La quantité maximal doit être inférieur à 5</span>
+  </div>
+
+  <div>
+    <label for="date-order">Date de commande</label>
+
+    <input name="date-order" type="date" [(ngModel)]="model.date" #date='ngModel' required>
+  </div>
+
+    <!-- Message d'erreurs -->
+  <div *ngIf="date.errors">
+    <span *ngIf="date.errors.required">Le champs date est requis</span>
+  </div>
+
+  <div>
+    <label for="contact-order">Contact</label>
+
+    <input name="contact-order" type="text" [(ngModel)]="model.contact" #contact='ngModel' required email>
+  </div>
+
+  <div *ngIf="contact.errors">
+    <span *ngIf="contact.errors.required">Le champ est requis</span>
+
+    <span *ngIf="contact.errors.email">L'adresse email doit être valide</span>
+  </div>
+
+  <button type="reset">Restaurer</button>
+
+  <button type="submit">Sauvegarder</button>
+</form>
