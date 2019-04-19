@@ -21,8 +21,4 @@ export class SignUpComponent implements OnInit {
   displayMoviesList() {
     this.showMovies = !this.showMovies;
   }
-
-  onSubmit() {
-    console.log('form submitted');
-  }
 }
