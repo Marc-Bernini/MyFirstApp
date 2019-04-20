@@ -1,6 +1,6 @@
 export class Order {
-  title: string;
+  user: string;
   quantity: number;
   date: Date;
-  contact: string;
+  mail: string;
 }

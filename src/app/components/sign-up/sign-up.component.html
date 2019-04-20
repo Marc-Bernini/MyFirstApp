@@ -1,14 +1,6 @@
-<div>
-  <label>
-    <h1>{{email}}</h1>
-  </label>
-</div>
+<button class="btn btn-primary ml-3" (click)="displayMoviesList()">Click to see movies list</button>
 
-<input type="email" name="email" placeholder="Please, enter your mail" [(ngModel)]="email"/>
-
-<button (click)="displayMoviesList()">Click to see movies list</button>
-
-<ul *appDisplayMovies= "showMovies">
+<ul class="ml-3" *appDisplayMovies= "showMovies">
 <li appHover >The fifth element</li>
     <li>Matrix</li>
     <li>Remember the titans</li>
@@ -16,60 +8,47 @@
 </ul>
 
 <form (ngSubmit)="myForm.valid && onSubmit(form)" #myForm="ngForm">
-  <div>
-    Form valid ? {{myForm.valid}}
-    Form invalid ? {{myForm.valid}}
-    Form submitted ? {{myForm.submitted}}
+  <div class="form-group w-50 d-flex flex-column m-auto">
+    <div>
+      <label for="user-order">User</label>
+
+      <input
+        class="form-control"
+        name="user-order"
+        type="text"
+        [(ngModel)]="model.user"
+        #user="ngModel"
+        minlength="4"
+        maxlength="25"
+        required
+        >
+    </div>
+
+    <!-- Message d'erreurs champ USER -->
+    <div *ngIf="myForm.submitted && user.errors">
+      <span *ngIf="user.errors.required">Le champs user est requis et ne doit pas dépasser 25 caractères</span>
+
+      <span *ngIf="user.errors?.minlength">Le champ User doit dépasser 4 caractères</span>
+
+      <span *ngIf="user.errors?.maxlength">Le champ User ne doit pas dépasser 25 caractères</span>
+    </div>
+
+    <div>
+      <label for="mail-order">Mail</label>
+
+      <input class="form-control" name="mail-order" type="text" [(ngModel)]="model.mail" #mail='ngModel' required email>
+    </div>
+
+    <!--Message d'erreurs champ MAIL-->
+    <div *ngIf="myForm.submitted && mail.errors">
+      <span *ngIf="mail.errors.required">Le champ mail est requis</span>
+
+      <span *ngIf="mail.errors.email">Le champ email est invalide</span>
+    </div>
+
+    <button class="btn btn-primary mt-2 mr-auto mb-2 ml-auto w-25" type="submit">Validate</button>
+
+    <button class="btn btn-primary mt-2 mr-auto mb-2 ml-auto w-25 w-25" type="reset">Cancel</button>
   </div>
-
-  <div>
-    <label for="title-order">Title</label>
-
-    <input name="title-order" type="text" [(ngModel)]="model.title" #title="ngModel" required>
-  </div>
-
-   <!-- Message d'erreurs -->
-  <div *ngIf="title.errors">
-    <span *ngIf="title.errors.required">Le champs title est requis</span>
-  </div>
-
-  <div>
-    <label for="quantity-order">Quantité</label>
-
-    <input name="quantity-order" type="number" [(ngModel)]="model.quantity" #quantity="ngModel" required max="5">
-  </div>
-
-  <!-- Message d'erreurs -->
-  <div *ngIf="quantity.errors">
-    <span *ngIf="quantity.errors.required">Le champs quantité est requis</span>
-
-    <span *ngIf="quantity.errors.max">La quantité maximal doit être inférieur à 5</span>
-  </div>
-
-  <div>
-    <label for="date-order">Date de commande</label>
-
-    <input name="date-order" type="date" [(ngModel)]="model.date" #date='ngModel' required>
-  </div>
-
-    <!-- Message d'erreurs -->
-  <div *ngIf="date.errors">
-    <span *ngIf="date.errors.required">Le champs date est requis</span>
-  </div>
-
-  <div>
-    <label for="contact-order">Contact</label>
-
-    <input name="contact-order" type="text" [(ngModel)]="model.contact" #contact='ngModel' required email>
-  </div>
-
-  <div *ngIf="contact.errors">
-    <span *ngIf="contact.errors.required">Le champ est requis</span>
-
-    <span *ngIf="contact.errors.email">L'adresse email doit être valide</span>
-  </div>
-
-  <button type="reset">Restaurer</button>
-
-  <button type="submit">Sauvegarder</button>
 </form>
+

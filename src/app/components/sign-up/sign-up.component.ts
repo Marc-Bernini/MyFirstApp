@@ -10,13 +10,13 @@ import { Order } from 'src/app/class/order';
 })
 export class SignUpComponent implements OnInit {
 
-  email = '';
   model: Order = new Order();
   hover = true;
   showMovies = false;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   displayMoviesList() {
     this.showMovies = !this.showMovies;
