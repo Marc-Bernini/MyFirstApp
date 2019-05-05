@@ -25,12 +25,14 @@
     </div>
 
     <!-- Message d'erreurs champ USER -->
-    <div *ngIf="myForm.submitted && user.errors">
+    <div *ngIf="myForm.submitted">
+      <div *ngIf="user.errors">
       <span *ngIf="user.errors.required">Le champs user est requis et ne doit pas dépasser 25 caractères</span>
 
-      <span *ngIf="user.errors?.minlength">Le champ User doit dépasser 4 caractères</span>
+      <span *ngIf="user.errors.minlength">Le champ User doit dépasser 4 caractères</span>
 
-      <span *ngIf="user.errors?.maxlength">Le champ User ne doit pas dépasser 25 caractères</span>
+      <span *ngIf="user.errors.maxlength">Le champ User ne doit pas dépasser 25 caractères</span>
+    </div>
     </div>
 
     <div>
