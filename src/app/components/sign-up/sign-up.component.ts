@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { Order } from 'src/app/class/order';
+import { SignUp } from 'src/app/class/signUp';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +10,7 @@ import { Order } from 'src/app/class/order';
 })
 export class SignUpComponent implements OnInit {
 
-  model: Order = new Order();
+  model: SignUp = new SignUp();
   hover = true;
   showMovies = false;
 
@@ -25,6 +25,8 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     // form submitted
     console.log(this.model);
+    this.model.user = '';
+    this.model.mail = '';
   }
 
 }
