@@ -1,0 +1,79 @@
+<form (ngSubmit)="searchMovieForm.valid && onSubmit()" [formGroup]="searchMovieForm" #movieForm="ngForm">
+  <div class="form-group w-50 d-flex flex-column m-auto">
+    <div formGroupName="login">
+      <label for="identify-search">Identifiant</label>
+
+      <input
+        class="form-control"
+        name="identify-search"
+        type="text"
+        formControlName="identify"
+        >
+
+        <label for="title-search">Titre</label>
+
+        <input
+          class="form-control"
+          name="title-search"
+          type="text"
+          formControlName="title"
+          >
+
+        <div *ngIf="movieForm.submitted && searchMovieForm.controls.login.errors">
+              {{searchMovieForm.controls.login.errors.isRequired}}
+        </div>
+    </div>
+
+    <div>
+      <label for="type-search">Type</label>
+
+      <select
+        name="type-search"
+        type="text"
+        formControlName="type"
+        >
+
+        <option>Films</option>
+
+        <option>Séries</option>
+
+        <option>Episodes</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="releaseYear-search">Année de sortie</label>
+
+      <input
+        class="form-control"
+        name="releaseYear-search"
+        type="number"
+        formControlName="releaseYear"
+        >
+    </div>
+
+<!--     <div *ngIf="searchMovieForm.controls.releaseYear.errors">
+      <span *ngIf="searchMovieForm.controls.releaseYear.errors.required">Le champ releaseYear est requis</span>
+    </div> -->
+
+    <div>
+      <label for="plug-search">Fiche</label>
+
+      <select
+        name="plug-search"
+        type="text"
+        formControlName="plug"
+        >
+
+        <option>Complète</option>
+
+        <option>Courte</option>
+
+      </select>
+    </div>
+
+    <button class="btn btn-primary mt-2 mr-auto mb-2 ml-auto w-25" type="reset">Restaurer</button>
+
+    <button class="btn btn-primary mt-2 mr-auto mb-2 ml-auto w-25" type="submit">Sauvegarder</button>
+  </div>
+</form>

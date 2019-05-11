@@ -11,6 +11,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HoverDirective } from './directives/hover.directive';
 import { DisplayMoviesDirective } from './directives/display-movies.directive';
 import { MenuComponent } from './components/menu/menu.component';
+import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MenuComponent } from './components/menu/menu.component';
     UserProfileComponent,
     HoverDirective,
     DisplayMoviesDirective,
-    MenuComponent
+    MenuComponent,
+    SearchMovieComponent
   ],
   imports: [
     BrowserModule,
