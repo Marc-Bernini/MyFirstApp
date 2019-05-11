@@ -36,7 +36,7 @@ export class SearchMovieComponent implements OnInit {
   onSubmit() {
     // Get form value as JSON object
     const searchMovie = this.searchMovieForm.value;
-    console.log('user : ' + searchMovie.type);
+    console.log(searchMovie);
   }
 
   // Function to check if identity or title input are filled
