@@ -20,7 +20,7 @@
           >
 
         <div *ngIf="movieForm.submitted && searchMovieForm.controls.login.errors">
-              {{searchMovieForm.controls.login.errors.isRequired}}
+              <span>{{searchMovieForm.controls.login.errors.isRequired}}</span>
         </div>
     </div>
 
@@ -52,9 +52,9 @@
         >
     </div>
 
-<!--     <div *ngIf="searchMovieForm.controls.releaseYear.errors">
-      <span *ngIf="searchMovieForm.controls.releaseYear.errors.required">Le champ releaseYear est requis</span>
-    </div> -->
+    <div *ngIf="movieForm.submitted && searchMovieForm.controls.releaseYear.errors">
+      <span>L'année doit être comprise entre {{ searchMovieForm.controls.releaseYear.errors.min.minYear }} et {{ searchMovieForm.controls.releaseYear.errors.min.maxYear }} </span>
+    </div>
 
     <div>
       <label for="plug-search">Fiche</label>

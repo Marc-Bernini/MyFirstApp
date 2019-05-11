@@ -20,9 +20,12 @@ export class SearchMovieComponent implements OnInit {
       }),
 
       type: ['Séries', Validators.required],
-      releaseYear: ['', Validators.required],
+      releaseYear: ['', [Validators.required, this.rangeDateValidator('minYear', 'maxYear')] ],
       plug: ['', Validators.required],
     });
+
+    minYear = 1900;
+    maxYear = 2019;
 
   constructor(private fb: FormBuilder) { }
 
@@ -49,9 +52,27 @@ export class SearchMovieComponent implements OnInit {
         return null;
 
       } else {
-        return {isRequired: 'L\'un des deux champs \"Identifiant\" ou \"Titre\" doit être renseigné' };
+        return { isRequired: 'L\'un des deux champs \"Identifiant\" ou \"Titre\" doit être renseigné' };
 
       }
+    };
+  }
+
+  rangeDateValidator(minYear, maxYear): ValidatorFn {
+
+    return (control: AbstractControl): ValidationErrors | null => {
+
+      const movieYear = control.value as number;
+      minYear = this.minYear;
+      maxYear = this.maxYear;
+
+      if (minYear <= movieYear && movieYear <= maxYear) {
+        return null;
+
+       } else {
+         return { min: { minYear, maxYear } };
+
+       }
     };
   }
 
