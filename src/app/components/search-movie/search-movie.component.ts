@@ -24,13 +24,13 @@ export class SearchMovieComponent implements OnInit {
 
       types: ['Série' , Validators.required],
       releaseYear: ['', [Validators.required, this.rangeDateValidator('minYear', 'maxYear')] ],
-      plugs: [ '', Validators.required]
+      sheet: [ {value: '', disabled: true}, Validators.required]
     });
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.initializePlug(); // Launch function at the component's initialisation
+    this.initializeSheet(); // Launch function at the component's initialisation
 
     this.searchMovieForm.valueChanges.subscribe(value => { // Listen input's value change
       console.log(value);
@@ -62,6 +62,7 @@ export class SearchMovieComponent implements OnInit {
     };
   }
 
+   // Function to validate Dates
   rangeDateValidator(minYear, maxYear): ValidatorFn {
 
     return (control: AbstractControl): ValidationErrors | null => {
@@ -81,13 +82,15 @@ export class SearchMovieComponent implements OnInit {
   }
 
   // Function to initialize select control "plug" to "Courte"
-  initializePlug() {
+  initializeSheet() {
     this.searchMovieForm.patchValue({
-      plugs: 'Courte'
+      sheet: 'Courte'
     });
   }
 
-/*   enablePlug() {
-    console.log(this.searchMovieForm.get('login.identify').value);
-  } */
+  // Function to enable the sheet's select status
+  enableSheet() {
+    this.searchMovieForm.get('login.identify').value === '' ?
+    this.searchMovieForm.get('sheet').disable() : this.searchMovieForm.get('sheet').enable();
+  }
 }

@@ -8,7 +8,7 @@
         name="identify-search"
         type="text"
         formControlName="identify"
-        >
+        (input)="enableSheet()"> <!--Function for change sheet's select status-->
 
         <label for="title-search">Titre</label>
 
@@ -51,12 +51,12 @@
               et {{ searchMovieForm.controls.releaseYear.errors.min.maxYear }} </span>
     </div>
 
-      <label for="plug-search">Fiche</label>
+      <label for="sheet-search">Fiche</label>
 
       <select
-        name="plugs-search"
+        name="sheet-search"
         type="text"
-        formControlName="plugs">
+        formControlName="sheet">
 
           <option>Complète</option>
 
