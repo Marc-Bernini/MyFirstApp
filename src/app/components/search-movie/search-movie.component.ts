@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-search-movie',
@@ -11,25 +11,14 @@ export class SearchMovieComponent implements OnInit {
     minYear = 1900;
     maxYear = 2019;
 
-    // Declare all controls with validation rules
-    searchMovieForm = this.fb.group({
-
-      login: this.fb.group({
-        identify: [''],
-        title: ['']
-      },
-      {
-        validator: this.isRequiredValidator('identify', 'title')
-      }),
-
-      types: ['Série' , Validators.required],
-      releaseYear: ['', [Validators.required, this.rangeDateValidator('minYear', 'maxYear')] ],
-      sheet: [ {value: '', disabled: true}, Validators.required]
-    });
+    // Variable to get the formBuilder
+    searchMovieForm;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.intializeMovieForm();
+
     this.initializeSheet(); // Launch function at the component's initialisation
 
     this.searchMovieForm.valueChanges.subscribe(value => { // Listen input's value change
@@ -37,10 +26,30 @@ export class SearchMovieComponent implements OnInit {
     });
   }
 
+    // Declare all controls with validation rules
+    intializeMovieForm() {
+      this.searchMovieForm = this.fb.group({
+
+        login: this.fb.group({
+          identify: [''],
+          title: ['']
+        },
+        {
+          validator: this.isRequiredValidator('identify', 'title')
+        }),
+
+        types: ['Série' , Validators.required],
+        releaseYear: ['', [Validators.required, this.rangeDateValidator('minYear', 'maxYear')] ],
+        sheet: [ {value: '', disabled: true}, Validators.required]
+      });
+      this.initializeSheet();
+    }
+
   onSubmit() {
     // Get form value as JSON object
     const searchMovie = this.searchMovieForm.value;
     console.log(searchMovie);
+    this.intializeMovieForm();
   }
 
   // Function to check if identity or title input are filled

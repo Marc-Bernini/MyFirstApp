@@ -5,6 +5,7 @@
 
       <input
         class="form-control"
+        [ngClass]="{error: movieForm.submitted && searchMovieForm.controls.login.errors}"
         name="identify-search"
         type="text"
         formControlName="identify"
@@ -14,13 +15,13 @@
 
         <input
           class="form-control"
+          [ngClass]="{error: movieForm.submitted && searchMovieForm.controls.login.errors}"
           name="title-search"
           type="text"
-          formControlName="title"
-          >
+          formControlName="title">
 
 
-        <div *ngIf="movieForm.submitted && searchMovieForm.controls.login.errors">
+        <div class="text-danger" *ngIf="movieForm.submitted && searchMovieForm.controls.login.errors">
             <span>{{searchMovieForm.controls.login.errors.isRequired}}</span>
         </div>
     </div>
@@ -42,11 +43,12 @@
     <label for="releaseYear-search">Année de sortie</label>
 
     <input
+      [ngClass]="{error: movieForm.submitted && searchMovieForm.controls.login.errors}"
       name="releaseYear-search"
       type="number"
       formControlName="releaseYear">
 
-    <div *ngIf="movieForm.submitted && searchMovieForm.controls.releaseYear.errors">
+    <div class="text-danger" *ngIf="movieForm.submitted && searchMovieForm.controls.releaseYear.errors">
         <span>L'année doit être comprise entre {{ searchMovieForm.controls.releaseYear.errors.min.minYear }}
               et {{ searchMovieForm.controls.releaseYear.errors.min.maxYear }} </span>
     </div>
