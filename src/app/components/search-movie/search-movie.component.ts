@@ -8,6 +8,9 @@ import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors
 })
 export class SearchMovieComponent implements OnInit {
 
+    minYear = 1900;
+    maxYear = 2019;
+
     // Declare all controls with validation rules
     searchMovieForm = this.fb.group({
 
@@ -19,18 +22,19 @@ export class SearchMovieComponent implements OnInit {
         validator: this.isRequiredValidator('identify', 'title')
       }),
 
-      type: ['Séries', Validators.required],
+      types: ['Série' , Validators.required],
       releaseYear: ['', [Validators.required, this.rangeDateValidator('minYear', 'maxYear')] ],
-      plug: ['', Validators.required],
+      plugs: [ '', Validators.required]
     });
-
-    minYear = 1900;
-    maxYear = 2019;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.initializePlug(); // Launch function at the component's initialisation
+
+    this.searchMovieForm.valueChanges.subscribe(value => { // Listen input's value change
+      console.log(value);
+    });
   }
 
   onSubmit() {
@@ -79,7 +83,11 @@ export class SearchMovieComponent implements OnInit {
   // Function to initialize select control "plug" to "Courte"
   initializePlug() {
     this.searchMovieForm.patchValue({
-      plug: 'Courte'
+      plugs: 'Courte'
     });
   }
+
+/*   enablePlug() {
+    console.log(this.searchMovieForm.get('login.identify').value);
+  } */
 }

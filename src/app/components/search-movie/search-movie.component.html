@@ -1,4 +1,4 @@
-<form (ngSubmit)="searchMovieForm.valid && onSubmit()" [formGroup]="searchMovieForm" #movieForm="ngForm">
+<form class="mt-5" (ngSubmit)="searchMovieForm.valid && onSubmit()" [formGroup]="searchMovieForm" #movieForm="ngForm">
   <div class="form-group w-50 d-flex flex-column m-auto">
     <div formGroupName="login">
       <label for="identify-search">Identifiant</label>
@@ -19,58 +19,49 @@
           formControlName="title"
           >
 
+
         <div *ngIf="movieForm.submitted && searchMovieForm.controls.login.errors">
-              <span>{{searchMovieForm.controls.login.errors.isRequired}}</span>
+            <span>{{searchMovieForm.controls.login.errors.isRequired}}</span>
         </div>
     </div>
 
-    <div>
-      <label for="type-search">Type</label>
+    <label for="types-search">Type</label>
 
-      <select
-        name="type-search"
-        type="text"
-        formControlName="type"
-        >
+    <select
+      name="types-search"
+      type="text"
+      formControlName="types">
 
-        <option>Films</option>
+      <option>Film</option>
 
-        <option>Séries</option>
+      <option>Série</option>
 
-        <option>Episodes</option>
-      </select>
-    </div>
+      <option>Épisode</option>
+    </select>
 
-    <div>
-      <label for="releaseYear-search">Année de sortie</label>
+    <label for="releaseYear-search">Année de sortie</label>
 
-      <input
-        class="form-control"
-        name="releaseYear-search"
-        type="number"
-        formControlName="releaseYear"
-        >
-    </div>
+    <input
+      name="releaseYear-search"
+      type="number"
+      formControlName="releaseYear">
 
     <div *ngIf="movieForm.submitted && searchMovieForm.controls.releaseYear.errors">
-      <span>L'année doit être comprise entre {{ searchMovieForm.controls.releaseYear.errors.min.minYear }} et {{ searchMovieForm.controls.releaseYear.errors.min.maxYear }} </span>
+        <span>L'année doit être comprise entre {{ searchMovieForm.controls.releaseYear.errors.min.minYear }}
+              et {{ searchMovieForm.controls.releaseYear.errors.min.maxYear }} </span>
     </div>
 
-    <div>
       <label for="plug-search">Fiche</label>
 
       <select
-        name="plug-search"
+        name="plugs-search"
         type="text"
-        formControlName="plug"
-        >
+        formControlName="plugs">
 
-        <option>Complète</option>
+          <option>Complète</option>
 
-        <option>Courte</option>
-
+          <option>Courte</option>
       </select>
-    </div>
 
     <button class="btn btn-danger mt-2 mr-auto mb-2 ml-auto w-25" type="reset">Restaurer</button>
 
