@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { SignUp } from 'src/app/class/signUp';
 
 @Component({

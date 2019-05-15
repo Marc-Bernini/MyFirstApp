@@ -38,7 +38,14 @@
     <div>
       <label for="mail-order">Mail</label>
 
-      <input class="form-control" name="mail-order" type="text" [(ngModel)]="model.mail" #mail='ngModel' required email>
+      <input
+        class="form-control"
+        name="mail-order"
+        type="text"
+        [(ngModel)]="model.mail"
+        #mail='ngModel'
+        required
+        email>
     </div>
 
     <!--Message d'erreurs champ MAIL-->

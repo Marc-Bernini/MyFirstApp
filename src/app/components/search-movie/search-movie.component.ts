@@ -48,7 +48,8 @@ export class SearchMovieComponent implements OnInit {
   onSubmit() {
     // Get form value as JSON object
     const searchMovie = this.searchMovieForm.value;
-    console.log(searchMovie);
+    console.log(JSON.stringify(searchMovie));
+
     this.intializeMovieForm();
   }
 
