@@ -9,16 +9,10 @@ import { SignUp } from 'src/app/class/signUp';
 export class SignUpComponent implements OnInit {
 
   model: SignUp = new SignUp();
-  hover = true;
-  showMovies = false;
 
   constructor() {}
 
   ngOnInit() { }
-
-  displayMoviesList() {
-    this.showMovies = !this.showMovies;
-  }
 
   onSubmit() {
     // form submitted

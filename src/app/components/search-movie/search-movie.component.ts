@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors, Form } from '@angular/forms';
+import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-search-movie',
@@ -8,11 +8,14 @@ import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors
 })
 export class SearchMovieComponent implements OnInit {
 
-    minYear = 1900;
-    maxYear = 2019;
+  hover = true;
+  showMovies = false;
 
-    // Variable to get the formBuilder
-    searchMovieForm;
+  minYear = 1900;
+  maxYear = 2019;
+
+  // Variable to get the formBuilder
+  searchMovieForm;
 
   constructor(private fb: FormBuilder) { }
 
@@ -26,24 +29,28 @@ export class SearchMovieComponent implements OnInit {
     });
   }
 
-    // Declare all controls with validation rules
-    intializeMovieForm() {
-      this.searchMovieForm = this.fb.group({
+  displayMoviesList() {
+    this.showMovies = !this.showMovies;
+  }
 
-        login: this.fb.group({
-          identify: [''],
-          title: ['']
-        },
-        {
-          validator: this.isRequiredValidator('identify', 'title')
-        }),
+  // Declare all controls with validation rules
+  intializeMovieForm() {
+    this.searchMovieForm = this.fb.group({
 
-        types: ['Série' , Validators.required],
-        releaseYear: ['', [Validators.required, this.rangeDateValidator('minYear', 'maxYear')] ],
-        sheet: [ {value: '', disabled: true}, Validators.required]
-      });
-      this.initializeSheet();
-    }
+      login: this.fb.group({
+        identify: [''],
+        title: ['']
+      },
+      {
+        validator: this.isRequiredValidator('identify', 'title')
+      }),
+
+      types: ['Série' , Validators.required],
+      releaseYear: ['', [Validators.required, this.rangeDateValidator('minYear', 'maxYear')] ],
+      sheet: [ {value: '', disabled: true}, Validators.required]
+    });
+    this.initializeSheet();
+  }
 
   onSubmit() {
     // Get form value as JSON object
