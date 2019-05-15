@@ -12,6 +12,8 @@ import { HoverDirective } from './directives/hover.directive';
 import { DisplayMoviesDirective } from './directives/display-movies.directive';
 import { MenuComponent } from './components/menu/menu.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
+import { DeveloperComponent } from './components/developer/developer.component';
+import { SkillComponent } from './components/skill/skill.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { SearchMovieComponent } from './components/search-movie/search-movie.com
     HoverDirective,
     DisplayMoviesDirective,
     MenuComponent,
-    SearchMovieComponent
+    SearchMovieComponent,
+    DeveloperComponent,
+    DeveloperComponent,
+    SkillComponent
   ],
   imports: [
     BrowserModule,

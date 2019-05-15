@@ -1,0 +1,17 @@
+<div class="card w-25">
+  <div class="card-body">
+    <h5 class="card-title">{{ developers.firstName }}</h5>
+
+    <h5 class="card-title">{{ developers.lastName }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ developers.age }}</h6>
+
+    <h6 class="card-subtitle mb-2 text-muted">{{ developers.sexe }}</h6>
+
+    <p class="card-text">{{ developers.bio }}</p>
+  </div>
+</div>
+
+<app-skill
+  *ngFor="let item of developers.skills; let i = index"
+  [skill]="developers.skills[i]">
+</app-skill>
