@@ -1,25 +1,27 @@
-<img [src]='User.photo' [alt]='User.name'/>
+<section class="mx-auto w-25 d-flex flex-column justify-content-around">
+  <img [src]='User.photo' [alt]='User.name'/>
 
-<h1>
-  Name: {{User.name}}
-</h1>
+  <h1>
+    Name: {{User.name}}
+  </h1>
 
-<h2>
-  First Name: {{User.firstName}}
-</h2>
+  <h2>
+    First Name: {{User.firstName}}
+  </h2>
 
-<p>
-  {{User.quote}}
-</p>
+  <p>
+    {{User.quote}}
+  </p>
 
-<input [(ngModel)]="User.quote" type="text" placeholder="Type your quote here">
+  <input [(ngModel)]="User.quote" type="text" placeholder="Type your quote here">
 
-<div class="btnHideAge">
-  <button (click)="hideAge()">
-    Do you want to see how old is {{User.firstName}} {{User.name}} ?
-  </button>
-</div>
+  <div class="btnHideAge">
+    <button (click)="hideAge()">
+      Do you want to see how old is {{User.firstName}} {{User.name}} ?
+    </button>
+  </div>
 
-<p [hidden]='hide'>
-  {{User.firstName}} {{User.name}} is {{User.age}} years old!
-</p>
+  <p [hidden]='hide'>
+    {{User.firstName}} {{User.name}} is {{User.age}} years old!
+  </p>
+</section>
