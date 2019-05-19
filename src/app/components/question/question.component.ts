@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { QuestionModel } from 'src/app/class/question.model';
 
 @Component({
@@ -8,36 +8,45 @@ import { QuestionModel } from 'src/app/class/question.model';
 })
 export class QuestionComponent implements OnInit {
 
-  public response: boolean;
+  yes = 'oui'; // To get answer from template
+  no = 'non'; // To get answer from template
 
-  public questions = [
-    new QuestionModel('1', 'Aimes-tu les logiciels libres ?', this.response, 3),
-    new QuestionModel('2', 'La force a-t-elle créé Linux ?', this.response, 1),
-    new QuestionModel('3', 'Est-ce que le code, c\'est la vie ?', this.response, 2),
-    new QuestionModel('4', 'Préfères-tu les GUI au CLI ?', this.response, 3),
-    new QuestionModel('5', 'L\'histoire de la force a-t-elle été écrite par Gig ?', this.response, 2),
-    new QuestionModel('6', 'La documentation est-elle le meilleur ami de la force ?', this.response, 2),
-    new QuestionModel('7', 'Penses-tu que tester c\'est douter ?', this.response, 1),
-    new QuestionModel('8', 'Javascript est\'il le Java du web ?', this.response, 1),
-    new QuestionModel('9', 'L\'open source se situe dans les Alpes ?', this.response, 4),
-    new QuestionModel('10', 'Angular est-il une pierre magique ?', this.response, 1)
-  ];
+  disabledYes = false; // To enable checkbox
+  disabledNo = false; // To enable checkbox
 
-  public id: string;
+  @Input()
+  public question: string; // To display question in template. Get it from yodaComponent
+
+  @Input()
+  public id: string; // To display id in template. Get it from yodaComponent
+
+  @Input()
+  public questions: Array<QuestionModel>; // To get all data from yodaComponent, allow to upload responses
 
   @Output()
-  public getAnswer: EventEmitter<any> = new EventEmitter();
+  public getAnswer: EventEmitter<any> = new EventEmitter(); // To emit new data with answers to yodaComponent
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  sendAnswer(question, id): void { // get the answers from the template
+
+    this.questions[id - 1].answer = question;
+    this.getAnswer.emit(this.questions);
 
   }
 
-  sendAnswer(question): void {
-    const answer = question.map(result =>
-      result = new QuestionModel(result.id, result.title, result.checked, result.score));
+  checkBoxChange(item) { // To display checkbox
 
-    this.getAnswer.emit(answer);
+    if (item === 'oui') {
+      this.disabledNo = true;
+      this.disabledYes = false;
+
+    } else if (item === 'non') {
+      this.disabledNo = false;
+      this.disabledYes = true;
+    }
   }
 }

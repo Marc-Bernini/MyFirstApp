@@ -1,5 +1,10 @@
 <p *ngFor="let answer of answers">
-  {{ answer.answer }}
+  {{ answer }}
 </p>
 
-<app-question (getAnswer)="onGetAnswer($event)"></app-question>
+<app-question
+  *ngFor="let question of questions; let i = index"
+  [id]="question.id"
+  [question]="question.title"
+  [questions]="questions"
+  (getAnswer)="onGetAnswer($event)"></app-question>

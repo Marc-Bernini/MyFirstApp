@@ -1,13 +1,35 @@
 <form>
-  <div *ngFor="let question of questions" class="form-check ">
-    <input (ngModelChange)="sendAnswer(questions)" class="form-check-input" [(ngModel)]="question.checked" type="checkbox" name="oui-{{ question.id }}" id="oui-{{ question.id }}" value="test">
+  <div class="form-check ">
+    <input
+      (ngModelChange)="sendAnswer(yes, id)"
+      class="form-check-input"
+      [(ngModel)]="yes.checked"
+      type="checkbox"
+      name="yes{{ id }}"
+      id="yes{{ id }}"
+      [disabled]="disabledYes"
+      (change)="checkBoxChange(yes)">
 
-    <label class="form-check-label mr-5" for="oui-{{ question.id }}">
-      Question number {{ question.id }} : {{ question.title }}
+    <label class="form-check-label mr-5" for="yes{{ id }}">
+      Oui
+    </label>
+
+    <input
+    (ngModelChange)="sendAnswer(no, id)"
+    class="form-check-input"
+    [(ngModel)]="no.checked"
+    type="checkbox"
+    name="no{{ id }}"
+    id="no{{ id }}"
+    [disabled]="disabledNo"
+    (change)="checkBoxChange(no)">
+
+    <label class="form-check-label mr-5" for="no{{ id }}">
+      Non
+    </label>
+
+    <label class="form-check-label mr-5">
+      Question numéro {{ id }} : {{ question }}
     </label>
   </div>
-
-  <button  type="submit" class="btn btn-primary">Submit</button>
-
-  <button type="reset" class="btn btn-primary">Cancel</button>
 </form>
