@@ -1,6 +1,6 @@
-<form (ngSubmit)="sendAnswer(questions)">
+<form>
   <div *ngFor="let question of questions" class="form-check ">
-    <input class="form-check-input" [(ngModel)]="question.checked" type="checkbox" name="oui-{{ question.id }}" id="oui-{{ question.id }}" value="test">
+    <input (ngModelChange)="sendAnswer(questions)" class="form-check-input" [(ngModel)]="question.checked" type="checkbox" name="oui-{{ question.id }}" id="oui-{{ question.id }}" value="test">
 
     <label class="form-check-label mr-5" for="oui-{{ question.id }}">
       Question number {{ question.id }} : {{ question.title }}
