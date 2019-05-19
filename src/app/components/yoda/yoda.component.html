@@ -1,0 +1,5 @@
+<p *ngFor="let answer of answers">
+  {{ answer.answer }}
+</p>
+
+<app-question (getAnswer)="onGetAnswer($event)"></app-question>

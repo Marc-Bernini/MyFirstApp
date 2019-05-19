@@ -4,13 +4,28 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { DeveloperComponent } from './components/developer/developer.component';
+import { QuestionComponent } from './components/question/question.component';
+import { YodaComponent } from './components/yoda/yoda.component';
 
 const routes: Routes = [
-  { path: 'signup', component: SignUpComponent },
-  { path: 'user', component: UserProfileComponent },
-  { path: 'movie', component: SearchMovieComponent },
-  { path: 'developer', component: DeveloperComponent },
-  { path: '', redirectTo: 'user', pathMatch: 'full' },
+  {
+    path: 'signup', component: SignUpComponent
+  },
+  {
+     path: 'user', component: UserProfileComponent
+  },
+  {
+     path: 'movie', component: SearchMovieComponent
+  },
+  {
+     path: 'developer', component: DeveloperComponent
+  },
+  {
+    path: 'form', component: YodaComponent
+  },
+  {
+    path: '', redirectTo: 'user', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
