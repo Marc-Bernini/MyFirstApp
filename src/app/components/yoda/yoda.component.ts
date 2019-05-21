@@ -24,7 +24,7 @@ export class YodaComponent implements OnInit {
     new QuestionModel('2', 'La force a-t-elle créé Linux ?', this.response, 1),
     new QuestionModel('3', 'Est-ce que le code, c\'est la vie ?', this.response, 2),
     new QuestionModel('4', 'Préfères-tu les GUI au CLI ?', this.response, 3),
-    new QuestionModel('5', 'L\'histoire de la force a-t-elle été écrite par Gig ?', this.response, 2),
+    new QuestionModel('5', 'L\'histoire de la force a-t-elle été écrite par Git ?', this.response, 2),
     new QuestionModel('6', 'La documentation est-elle le meilleur ami de la force ?', this.response, 2),
     new QuestionModel('7', 'Penses-tu que tester c\'est douter ?', this.response, 1),
     new QuestionModel('8', 'Javascript est\'il le Java du web ?', this.response, 1),
@@ -42,10 +42,9 @@ export class YodaComponent implements OnInit {
     const totalPoint = 0;
     let numberOfpoint = 0;
 
-    for (const score of $event) { // count totalPoint
+    const reducer = (accumulator, currentValue) => accumulator + currentValue; // method to count total of an array
 
-      numberOfpoint += $event[score];
-    }
+    numberOfpoint = $event.reduce(reducer); // count totalPoint with reducer method
 
     this.numberOfResponse ++; // check the number of checkbox clicked
 

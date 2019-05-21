@@ -1,13 +1,27 @@
-<h1 *ngIf="displayAverage && average > 12">
-  Okay young padawan now you feel the dev force ! Your score is {{ average }}/20!
-</h1>
+<div *ngIf="displayAverage && average > 12" class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 text-justify text-center">Okay young padawan now you feel the dev force !</h1>
 
-<h1 *ngIf="displayAverage && average <= 12">
-  Go and never come back... Your score is {{ average }}/20
-</h1>
+    <p class="lead text-justify text-center">Your score is <span class="text-success">{{ average }}/20!</span></p>
+  </div>
+</div>
 
-<div *ngFor="let question of questions; let i = index">
-  <p *ngIf="displayAverage">{{ question.title }}, the good answer is "{{ answers[i] }}"</p>
+<div *ngIf="displayAverage && average <= 12" class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 text-justify text-center">Go and never come back...</h1>
+
+    <p class="lead text-justify text-center">Your score is <span class="text-danger">{{ average }}/20</span></p>
+  </div>
+</div>
+
+<h5 *ngIf="displayAverage" class="alert alert-success text-center w-25 mx-auto" role="alert">
+  Correction
+</h5>
+
+<div class="form-group d-flex justify-content-center" *ngFor="let question of questions; let i = index">
+  <div class="w-75">
+  <p *ngIf="displayAverage">Question number {{ question.id }} - {{ question.title }} The good answer is<span class="text-success">"{{ answers[i] }}"</span></p>
+</div>
 </div>
 
 <app-question
