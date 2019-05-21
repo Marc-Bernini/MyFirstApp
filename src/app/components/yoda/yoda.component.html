@@ -1,6 +1,14 @@
-<p *ngFor="let answer of answers">
-  {{ answer }}
-</p>
+<h1 *ngIf="displayAverage && average > 12">
+  Okay young padawan now you feel the dev force ! Your score is {{ average }}/20!
+</h1>
+
+<h1 *ngIf="displayAverage && average <= 12">
+  Go and never come back... Your score is {{ average }}/20
+</h1>
+
+<div *ngFor="let question of questions; let i = index">
+  <p *ngIf="displayAverage">{{ question.title }}, the good answer is "{{ answers[i] }}"</p>
+</div>
 
 <app-question
   *ngFor="let question of questions; let i = index"

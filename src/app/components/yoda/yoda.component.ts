@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { QuestionModel } from 'src/app/class/question.model';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-yoda',
@@ -8,13 +9,17 @@ import { QuestionModel } from 'src/app/class/question.model';
 })
 export class YodaComponent implements OnInit {
 
-  public answers: Array<QuestionModel>; // array of user's answers
+  public answers = ['oui', 'oui', 'oui', 'non', 'oui' , 'oui', 'non', 'non', 'non' , 'non']; // array of good answers
 
-  public average: number;
+  public average: number; // user's average
 
-  public response: boolean;
+  public numberOfResponse = 0; // to control checkbox clicked
 
-  public questions = [
+  public displayAverage = false; // to display user's average
+
+  public response: boolean; // to set QuestionModel's answer
+
+  public questions = [ // list of questions
     new QuestionModel('1', 'Aimes-tu les logiciels libres ?', this.response, 3),
     new QuestionModel('2', 'La force a-t-elle créé Linux ?', this.response, 1),
     new QuestionModel('3', 'Est-ce que le code, c\'est la vie ?', this.response, 2),
@@ -30,15 +35,27 @@ export class YodaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   onGetAnswer($event): void { // Get data from questionComponent and filter them to got only answer in the array
-    this.answers = $event.filter(allData => allData.answer).map(onlyAnswer => onlyAnswer.answer);
+    const totalPoint = 0;
+    let numberOfpoint = 0;
+
+    for (let i = 0; i < $event.length; i++) { // count totalPoint
+
+      numberOfpoint += $event[i];
+    }
+
+    this.numberOfResponse ++; // check the number of checkbox clicked
+
+    this.numberOfResponse === 10 ? this.displayAverage = true : this.displayAverage = false; // display template
+
+    this.calculateAverage(numberOfpoint, totalPoint);
   }
 
-  calculateAverage(numberOfpoint, totalPoint): number {
-    totalPoint = numberOfpoint * 10;
-    return totalPoint / 10;
+  calculateAverage(numberOfPoint, totalPoint): number { // return user's average
+     return this.average = totalPoint  += numberOfPoint ;
   }
 
 }
