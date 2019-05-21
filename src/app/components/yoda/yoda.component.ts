@@ -42,9 +42,9 @@ export class YodaComponent implements OnInit {
     const totalPoint = 0;
     let numberOfpoint = 0;
 
-    for (let i = 0; i < $event.length; i++) { // count totalPoint
+    for (const score of $event) { // count totalPoint
 
-      numberOfpoint += $event[i];
+      numberOfpoint += $event[score];
     }
 
     this.numberOfResponse ++; // check the number of checkbox clicked
