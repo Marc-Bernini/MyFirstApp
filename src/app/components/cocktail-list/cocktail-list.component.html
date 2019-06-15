@@ -1,0 +1,10 @@
+<div *ngFor="let cocktail of cocktails" class="d-flex justify-content-center mt-4 mb-4">
+  <div class="card" style="width: 18rem;">
+    <img [src]="cocktail.img" class="card-img-top" alt="{{ cocktail.name }}">
+
+    <div class="card-body">
+      <h3 class="card-title text-center">{{ cocktail.name }}</h3>
+      <h5 class="card-text text-center">{{ cocktail.price }}€</h5>
+    </div>
+  </div>
+</div>
