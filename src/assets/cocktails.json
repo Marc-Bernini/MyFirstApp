@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Mojito",
+    "price": 8,
+    "img": "https://static.cuisineaz.com/400x320/i14978-recette-de-mojito.jpeg"
+  },
+  {
+    "name": "Cuba Libre",
+    "price": 10,
+    "img": "https://cutt.ly/Fooego"
+  },
+  {
+    "name": "Jagger Bomb",
+    "price": 10,
+    "img": "https://i.ytimg.com/vi/eKyEknX7iLE/maxresdefault.jpg"
+  }
+]
