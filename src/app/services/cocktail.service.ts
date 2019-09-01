@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cocktail } from '../class/cocktail';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +15,15 @@ export class CocktailService {
     new Cocktail ('Jagger Bomb', 10, 'https://i.ytimg.com/vi/eKyEknX7iLE/maxresdefault.jpg')
   ];
 
-  constructor() { }
+  pathCocktail = '../../assets/cocktails.json';
 
-  getCocktails() {
-    return this.cocktailList;
+  constructor(public http: HttpClient) { }
+
+  getCocktails(): Observable<Cocktail[]> {
+    const jsonObject: Observable<any> = this.http.get(this.pathCocktail);
+    const treatment = (paramData: any) => {
+      return paramData as Cocktail[];
+    };
+    return jsonObject.pipe(map(treatment));
   }
 }
